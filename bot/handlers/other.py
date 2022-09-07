@@ -1,6 +1,12 @@
 from aiogram import Dispatcher
+from aiogram.types import Message
 
 
-def register_other_handlers(dp: Dispatcher):
+async def echo(msg: Message):
+    # todo: remove echo example:3
+    await msg.answer(msg.text)
+
+
+def register_other_handlers(dp: Dispatcher) -> None:
     # todo: register all other handlers
-    pass
+    dp.register_message_handler(echo, content_types=['text'])
